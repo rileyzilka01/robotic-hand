@@ -1,0 +1,38 @@
+need: PCB board - https://www.amazon.ca/AUSTOR-Prototype-Universal-Protoboard-Electronic/dp/B074X2GDH2/ref=d_pd_sbs_sccl_3_2/140-5080753-0138117?pd_rd_w=Qljk3&content-id=amzn1.sym.2c24262a-b324-4e71-9c5b-3b9cfb0f4a1d&pf_rd_p=2c24262a-b324-4e71-9c5b-3b9cfb0f4a1d&pf_rd_r=V7SHQN9APQ2ZD12WDY3S&pd_rd_wg=htBPl&pd_rd_r=3413ef34-fcc7-4474-9b4d-8cc51129cf2c&pd_rd_i=B074X2GDH2&psc=1
+      *Tentative* Servo controller (16channel, up to 16 motors) - https://www.amazon.ca/dp/B09S9XNNDZ/ref=sspa_dk_detail_0?psc=1&pd_rd_w=8MZAD&content-id=amzn1.sym.f63ff2fc-c217-4ab3-8f6c-28174e351d82&pf_rd_p=f63ff2fc-c217-4ab3-8f6c-28174e351d82&pf_rd_r=H4RDYDV5BRA9B244Z6T4&pd_rd_wg=JXw7y&pd_rd_r=effb7ce3-0212-40af-aa2c-c3d506d2f363&s=hi&sp_csd=d2lkZ2V0TmFtZT1zcF9kZXRhaWwy
+      Servo Motors - https://www.amazon.ca/Miuzei-Helicopter-Airplane-Remote-Control/dp/B07H85M78M/ref=sr_1_1?keywords=servo&qid=1667521329&qu=eyJxc2MiOiI1Ljc4IiwicXNhIjoiNS40NCIsInFzcCI6IjUuMDUifQ%3D%3D&sr=8-1
+      *Tentative* Soldering Iron - https://www.amazon.ca/Soldering-Electronics-Adjustable-Temperature-Desoldering/dp/B075KLBQCV/ref=asc_df_B075KLBQCV/?tag=googleshopc0c-20&linkCode=df0&hvadid=292953024923&hvpos=&hvnetw=g&hvrand=10684489702477715555&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9061281&hvtargid=pla-570370433490&th=1
+      Jumper Wires - https://www.amazon.ca/Elegoo-120pcs-Multicolored-Breadboard-arduino/dp/B01EV70C78/ref=sr_1_2_sspa?crid=O002RZLK2XZD&keywords=male+to+female+jumper+wire&qid=1667523423&qu=eyJxc2MiOiIwLjAwIiwicXNhIjoiMC4wMCIsInFzcCI6IjAuMDAifQ%3D%3D&s=industrial&sprefix=male+to+female+jumper+wire+%2Cindustrial%2C111&sr=1-2-spons&psc=1
+      *Tentative* Power Supply
+      Some kind of metal rods/connectors - Home depot maybe
+
+
+todo: Design the hand (consider room needed for motion and wires/tendons)
+        - Design the palm
+            - Plan for servos
+            - Wire management is a must
+        - One Finger at a time
+            - Plan rotation axis and plan for tendon
+      Order the parts
+        - In progress
+      3D print the fingers and hand parts
+        - Elko garage
+        - Get 3D printer from home
+      Assemble the hand
+        - Construct
+      Wire up the hand and servos
+        - Breadboard?
+        - Servo Controller?
+        - Direct wiring?
+      Write a class for the servos
+        - Python
+        - Different fingers ex) hand.finger1.pitch, hand.finger2.yaw
+      Program the hand
+        - Python
+        - Class
+        - Camera Input
+        - Solve collision issues
+      Setup Camera tracking / Input
+        - Degrees for fingers
+        - Keep track of position
+
