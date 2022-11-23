@@ -1,7 +1,5 @@
 # robotic-hand
 
-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
-
 # requirements
 
 pip3 install mediapipe\n
