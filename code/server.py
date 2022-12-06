@@ -100,9 +100,16 @@ def main():
                 numer = np.dot(vec1, vec2)
                 denom = np.linalg.norm(vec1) * np.linalg.norm(vec2)
                 angle = math.acos(numer/denom)*(180/math.pi)
+                if angle > 90:
+                    angle = 90
+                if angle < 0:
+                    angle = 0
+                
+                ratio = angle/90
+                conversion = 120*ratio
 
                 #Send angle to the pi
-                server.sendAngle(angle, queue)
+                server.sendAngle(conversion, queue)
 
                 print(f'Pinky Base Angle: {angle}')
                 #print(vec1)
