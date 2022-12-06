@@ -26,7 +26,7 @@ class Hand():
 
     def zeroServos(self):
         self.thumbBase.angle = 0
-        self.thumbEnd.angle = 180
+        self.thumbEnd.angle = 120
         self.pointerBase.angle = 180
         self.pointerEnd.angle = 0
         self.middleBase.angle = 0
@@ -54,59 +54,46 @@ class Hand():
         self.thumbEnd.angle = 0
         self.pointerBase.angle = 60
         self.pointerEnd.angle = 180
+        self.middleBase.angle = 0
+        self.middleEnd.angle = 180
         self.ringBase.angle = 60
         self.ringEnd.angle = 180
         self.pinkyBase.angle = 60
         self.pinkyEnd.angle = 0
 
     def rockOn(self):
+        self.thumbBase.angle = 0
+        self.thumbEnd.angle = 120
+        self.pointerBase.angle = 180
+        self.pointerEnd.angle = 0
         self.middleBase.angle = 120
         self.middleEnd.angle = 0
         self.ringBase.angle = 60
         self.ringEnd.angle = 180
+        self.pinkyBase.angle = 180
+        self.pinkyEnd.angle = 180
 
-    def testMovements(self):
-
-        self.zeroServos()
-        time.sleep(1)
-
-        #Finger by finger make a fist
-        for i in range(5):
-            for j in range(179):
-                if j < 120:
-                    if i == 0: self.pinkyBase.angle = (180-j)
-                    elif i == 1: self.ringBase.angle = (180-j)
-                    elif i == 2: self.middleBase.angle = j
-                    elif i == 3: self.pointerBase.angle = (180-j)
-                    elif i == 4: self.thumbBase.angle = j
-                
-                if i == 0: self.pinkyEnd.angle = (180-j)
-                elif i == 1: self.ringEnd.angle = j
-                elif i == 2: self.middleEnd.angle = (180-j)
-                elif i == 3: self.pointerEnd.angle = j
-                elif i == 4: self.thumbEnd.angle = (180-j)
-                time.sleep(0.02)
-
-        #Gradually release the fist
-        for i in range(179):
-            if i < 120:
-                self.thumbBase.angle = (120-i)
-                self.pointerBase.angle = (60+i)
-                self.middleBase.angle = (120-i)
-                self.ringBase.angle = (60+i)
-                self.pinkyBase.angle = (60+i)
-            self.thumbEnd.angle = i
-            self.pointerEnd.angle = (180-i)
-            self.middleEnd.angle = i
-            self.ringEnd.angle = (180-i)
-            self.pinkyEnd.angle = i
-            time.sleep(0.02)
-
-        #Make the fist quickly
-        self.fist()
-        time.sleep(1)
-
-        self.zeroServos()
+    def singleFingersToFist(self):
+        self.thumbBase.angle = 120
+        time.sleep(0.25)
+        self.thumbEnd.angle = 0
+        time.sleep(0.25)
+        self.pointerBase.angle = 60
+        time.sleep(0.25)
+        self.pointerEnd.angle = 180
+        time.sleep(0.25)
+        self.middleBase.angle = 120
+        time.sleep(0.25)
+        self.middleEnd.angle = 0
+        time.sleep(0.25)
+        self.ringBase.angle = 60
+        time.sleep(0.25)
+        self.ringEnd.angle = 180
+        time.sleep(0.25)
+        self.pinkyBase.angle = 60
+        time.sleep(0.25)
+        self.pinkyEnd.angle = 0
+        time.sleep(0.25)
 
     def terminate(self):
         self.pca.deinit()
@@ -118,20 +105,16 @@ def main():
     hand.zeroServos()
     time.sleep(1)
 
-    #hand.testMovements()
-    #time.sleep(1)
+    ans = ''
+    while ans != 'stop' or ans in ['1', '2', '3', '4', '0']:
+        ans = input("Please enter an input\n\t1: Fist\n\t2: Rock On\n\t3: Middle Finger\n\t4: Finger by Finger to Fist\n\t0: Zero Servos\n")
+        if ans == '1': hand.fist()
+        elif ans == '2': hand.rockOn()
+        elif ans == '3': hand.middleFinger()
+        elif ans == '4': hand.singleFingersToFist()
 
-    for i in range(5):
-        hand.fist()
+        elif ans == '0': hand.zeroServos()
         time.sleep(0.5)
-        hand.zeroServos()
-        time.sleep(0.5)
-
-    #hand.middleFinger()
-    #time.sleep(1)
-
-    #hand.rockOn()
-    #time.sleep(5)
 
     hand.zeroServos()
 
