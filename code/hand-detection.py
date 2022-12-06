@@ -1,6 +1,8 @@
 import cv2 as cv
 import mediapipe as mp
 import time
+import numpy as np
+import math
 
 
 def main():
@@ -35,6 +37,11 @@ def main():
                 coords = handCoord.landmark
                 print(coords[0].x*w)
                 vec1 = [coords[17].x - coords[0].x, coords[17].y - coords[0].y, coords[17].z - coords[0].z]
+                vec2 = [coords[18].x - coords[17].x, coords[18].y - coords[17].y, coords[18].z - coords[17].z]
+                numer = np.dot(vec1, vec2)
+                denom = np.linalg.norm(vec1) * np.linalg.norm(vec2)
+                angle = math.acos(numer/denom)
+                print(angle)
                 print(vec1)
                 for id, coord in enumerate(handCoord.landmark):
                     if id == 0:

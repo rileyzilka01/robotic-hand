@@ -36,3 +36,7 @@ todo: Design the hand (consider room needed for motion and wires/tendons)
         - Degrees for fingers
         - Keep track of position
 
+
+Resources
+    - www.robotnanohand.com/
+
