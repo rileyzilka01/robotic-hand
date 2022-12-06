@@ -106,6 +106,7 @@ class Hand():
             angle = client.pollData()
             self.pinkyBase.angle = angle
             client.sendDone()
+            time.sleep(0.5)
 
     def terminate(self):
         self.pca.deinit()
