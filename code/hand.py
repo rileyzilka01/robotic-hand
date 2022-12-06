@@ -1,4 +1,5 @@
 import time
+from client import *
 
 from board import SCL, SDA
 import busio
@@ -95,6 +96,17 @@ class Hand():
         self.pinkyEnd.angle = 0
         time.sleep(0.25)
 
+    def runWithCamera(self):
+        host = "169.254.144.3"
+        port = 9999
+        client = Client(host, port)
+
+        #Get the initial angles for getting the estimtion of jacobian
+        while (1):
+            angle = client.pollData()
+            self.pinkyBase.angle = angle
+            client.sendDone()
+
     def terminate(self):
         self.pca.deinit()
 
@@ -106,12 +118,13 @@ def main():
     time.sleep(1)
 
     ans = ''
-    while ans != 'stop' or ans in ['1', '2', '3', '4', '0']:
-        ans = input("Please enter an input\n\t1: Fist\n\t2: Rock On\n\t3: Middle Finger\n\t4: Finger by Finger to Fist\n\t0: Zero Servos\n")
+    while ans != 'stop' or ans in ['1', '2', '3', '4', '5', '0']:
+        ans = input("Please enter an input\n\t1: Fist\n\t2: Rock On\n\t3: Middle Finger\n\t4: Finger by Finger to Fist\n\t5: Run With Camera\n\t0: Zero Servos\n")
         if ans == '1': hand.fist()
         elif ans == '2': hand.rockOn()
         elif ans == '3': hand.middleFinger()
         elif ans == '4': hand.singleFingersToFist()
+        elif ans == '5': hand.runWithCamera()
 
         elif ans == '0': hand.zeroServos()
         time.sleep(0.5)
