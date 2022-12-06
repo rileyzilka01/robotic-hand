@@ -40,14 +40,14 @@ def main():
                 vec2 = [coords[18].x - coords[17].x, coords[18].y - coords[17].y, coords[18].z - coords[17].z]
                 numer = np.dot(vec1, vec2)
                 denom = np.linalg.norm(vec1) * np.linalg.norm(vec2)
-                angle = math.acos(numer/denom)
-                print(angle)
-                print(vec1)
+                angle = math.acos(numer/denom)*(180/math.pi)
+                print(f'Pinky Base Angle: {angle}')
+                #print(vec1)
                 for id, coord in enumerate(handCoord.landmark):
                     if id == 0:
                         cy = int(h*coord.y)
                         cx = int(w*coord.x)
-                        print(f"{id}: x={cx}, y={cy}")
+                        #print(f"{id}: x={cx}, y={cy}")
                         cv.circle(img, (cx, cy), 10, (255, 0, 255), cv.FILLED)
 
                 mpDraw.draw_landmarks(img, handCoord, mpHands.HAND_CONNECTIONS)
