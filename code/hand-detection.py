@@ -32,6 +32,10 @@ def main():
         results = hands.process(img)
         if results.multi_hand_landmarks:
             for handCoord in results.multi_hand_landmarks:
+                coords = handCoord.landmark
+                print(coords[0].x*w)
+                vec1 = [coords[17].x - coords[0].x, coords[17].y - coords[0].y, coords[17].z - coords[0].z]
+                print(vec1)
                 for id, coord in enumerate(handCoord.landmark):
                     if id == 0:
                         cy = int(h*coord.y)
