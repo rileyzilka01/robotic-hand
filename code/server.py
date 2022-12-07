@@ -17,7 +17,7 @@ class Server:
         
         serversocket.bind((host, port))
         # queue up to 5 requests
-        serversocket.listen(5) 
+        serversocket.listen(1) 
         self.cs, addr = serversocket.accept()
         print ("Connected to: " + str(addr))
 
@@ -60,6 +60,13 @@ class Server:
         self.cs.send("SAFETY_OFF".encode("UTF-8"))
 
 def main():
+    #Server
+    host = "192.168.1.194"
+    port = 9999
+    server = Server(host, port)
+    queue = Queue()
+
+
     #Camera
     cap = cv.VideoCapture(0)
 
@@ -75,13 +82,6 @@ def main():
         min_tracking_confidence=0.75,
         max_num_hands=2
     )
-    
-    host = "169.254.144.3"
-    #host = socket.gethostname()
-    #print(host)
-    port = 80
-    server = Server(host, port)
-    queue = Queue()
 
     while (True):
         #Get frame from webcam
