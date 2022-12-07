@@ -97,7 +97,7 @@ class Hand():
         time.sleep(0.25)
 
     def runWithCamera(self):
-        host = "192.168.1.1"
+        host = "192.168.1.194"
         port = 9999
         client = Client(host, port)
 
@@ -106,7 +106,7 @@ class Hand():
             angle = client.pollData()
             self.pinkyBase.angle = angle
             client.sendDone()
-            time.sleep(0.5)
+            time.sleep(0.2)
 
     def terminate(self):
         self.pca.deinit()

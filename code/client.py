@@ -27,11 +27,14 @@ class Client:
         self.s.send("RESET".encode("UTF-8"))
 
 def main():
-    host = "192.168.1.1"
+    host = "192.168.1.194"
     port = 9999
     client = Client(host, port)
     i = 0
     while True:
         print(client.pollData())
-        time.sleep(1)
+        time.sleep(0.1)
         client.sendDone()
+
+if __name__ == "__main__":
+    main()
