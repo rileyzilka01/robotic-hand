@@ -111,7 +111,15 @@ class Hand():
 
 
     def runWithCamera(self):
-        host = "192.168.1.194"
+        ans = input("Home Network (1)\nLocal Network (2)\nChoose Option: ")
+        while ans not in ['1', '2']:
+            ans = input("Home Network (1)\nLocal Network (2)\nChoose Option: ")
+
+        if ans == '1':
+            host = "192.168.1.194"
+        elif ans == '2':
+            host = "172.21.128.1"
+            
         port = 9999
         client = Client(host, port)
 

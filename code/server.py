@@ -79,8 +79,15 @@ def getAngles(coords, fingerBase, fingerEnd):
     return baseAngle, endAngle
 
 def main():
+    ans = input("Home Network (1)\nLocal Network (2)\nChoose Option: ")
+    while ans not in ['1', '2']:
+        ans = input("Home Network (1)\nLocal Network (2)\nChoose Option: ")
+
+    if ans == '1':
+        host = "192.168.1.194"
+    elif ans == '2':
+        host = "172.21.128.1"
     #Server
-    host = "192.168.1.194"
     port = 9999
     server = Server(host, port)
     queue = Queue()
