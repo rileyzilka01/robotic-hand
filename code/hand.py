@@ -1,5 +1,6 @@
 import time
 from client import *
+import ast
 
 from board import SCL, SDA
 import busio
@@ -96,6 +97,19 @@ class Hand():
         self.pinkyEnd.angle = 0
         time.sleep(0.25)
 
+    def setHandAngles(self, thumb, pointer, middle, ring, pinky):
+        self.thumbBase.angle = int(float(thumb[0]))
+        self.thumbEnd.angle = 120-(120*(int(float(thumb[1]))/180))
+        self.pointerBase.angle = 180-int(float(pointer[0]))
+        self.pointerEnd.angle = int(float(pointer[1])) 
+        self.middleBase.angle = int(float(middle[1]))
+        self.middleEnd.angle = 180-int(float(middle[1]))
+        self.ringBase.angle = 180-int(float(ring[0]))
+        self.ringEnd.angle = int(float(ring[1]))
+        self.pinkyBase.angle = 180-int(float(pinky[0]))
+        self.pinkyEnd.angle = 180-int(float(pinky[1]))
+
+
     def runWithCamera(self):
         host = "192.168.1.194"
         port = 9999
@@ -103,9 +117,23 @@ class Hand():
 
         #Get the initial angles for getting the estimtion of jacobian
         while (1):
-            angle = client.pollData()
-            self.pinkyBase.angle = angle
+            thumb = client.pollData()
             client.sendDone()
+            pointer = client.pollData()
+            client.sendDone()
+            middle = client.pollData()
+            client.sendDone()
+            ring = client.pollData()
+            client.sendDone()
+            pinky = client.pollData()
+            client.sendDone()
+            thumb = ast.literal_eval(thumb)
+            pointer = ast.literal_eval(pointer)
+            middle = ast.literal_eval(middle)
+            ring = ast.literal_eval(ring)
+            pinky = ast.literal_eval(pinky)
+
+            self.setHandAngles(thumb, pointer, middle, ring, pinky)
             time.sleep(0.2)
 
     def terminate(self):
