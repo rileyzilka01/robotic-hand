@@ -77,7 +77,9 @@ def main():
     )
     
     host = "169.254.144.3"
-    port = 9999
+    #host = socket.gethostname()
+    #print(host)
+    port = 80
     server = Server(host, port)
     queue = Queue()
 
