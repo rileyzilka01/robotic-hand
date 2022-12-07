@@ -98,7 +98,7 @@ class Hand():
         time.sleep(0.25)
 
     def setHandAngles(self, thumb, pointer, middle, ring, pinky):
-        self.thumbBase.angle = int(float(thumb[0]))
+        self.thumbBase.angle = int(float(thumb[1]))
         self.thumbEnd.angle = 120-(120*(int(float(thumb[1]))/180))
         self.pointerBase.angle = 180-int(float(pointer[0]))
         self.pointerEnd.angle = int(float(pointer[1])) 
@@ -133,8 +133,10 @@ class Hand():
             ring = ast.literal_eval(ring)
             pinky = ast.literal_eval(pinky)
 
+            print(f"DATA RECEIVED: {thumb}, {pointer}, {middle}, {ring}, {pinky}")
+
             self.setHandAngles(thumb, pointer, middle, ring, pinky)
-            time.sleep(0.2)
+            time.sleep(0.1)
 
     def terminate(self):
         self.pca.deinit()
