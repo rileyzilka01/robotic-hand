@@ -12,11 +12,7 @@ The project is free to use and develop by anyone, so long as I am mentioned.
 
 If you are using an Apple Silicon chip make sure you use a bash terminal to install the following requirements. 
 
-pip3 install mediapipe-silicon
-pip3 install opencv-python
-pip3 install adafruit-circuitpython-pca9685
-pip3 install adafruit-circuitpython-servokit
-pip3 install adafruit-circuitpython
+pip3 install mediapipe-silicon opencv-python adafruit-circuitpython-pca9685 adafruit-circuitpython-servokit adafruit-circuitpython
 
 If you are using any other chip please use the following mediapipe library instead
 
