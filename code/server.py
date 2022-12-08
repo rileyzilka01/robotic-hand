@@ -86,7 +86,7 @@ def main():
     if ans == '1':
         host = "192.168.1.194"
     elif ans == '2':
-        host = "169.254.58.57"
+        host = "169.254.216.39"
     #Server
     port = 9999
     server = Server(host, port)
