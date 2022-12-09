@@ -118,7 +118,7 @@ class Hand():
         if ans == '1':
             host = "192.168.1.194"
         elif ans == '2':
-            host = "169.254.251.212"
+            host = "169.254.13.212"
             
         port = 9999
         client = Client(host, port)
